@@ -117,6 +117,11 @@ public class View_hocsinh extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("Làm Bài");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,6 +285,12 @@ public class View_hocsinh extends javax.swing.JFrame {
         lblSocau.setText(dtm.getValueAt(index, 2).toString());
         lblThoiluong.setText(dtm.getValueAt(index, 3).toString() + " phút");
     }//GEN-LAST:event_tableAllDethiMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String made = lblMade.getText();
+        new View_lambai(made).setVisible(true);
+        this.toBack();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void load_alldethi() {
         try {

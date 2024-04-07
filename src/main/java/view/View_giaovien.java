@@ -4,18 +4,19 @@
  */
 package view;
 
-import com.mysql.cj.xdevapi.Result;
 import database.connection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,10 +24,10 @@ import java.util.logging.Logger;
  */
 public class View_giaovien extends javax.swing.JFrame {
     private Connection con = null;
-    Map<String,String> mapMonhoc;
+    Map<String,String> mapMonhoc,mapMonhoc2;
     DefaultTableModel hienthi, andanh;
-    int macau;
-    String debai,da1,da2,da3,da4;
+    int macau, tempIndex;
+    String debai,da1,da2,da3,da4,mamonz;
     
     public View_giaovien() {
         initComponents();
@@ -35,6 +36,7 @@ public class View_giaovien extends javax.swing.JFrame {
     
     public void init2() {
         mapMonhoc = new HashMap<>();
+        mapMonhoc2 = new HashMap<>();
         load_Cauhoi("");
         load_cbmonhoc();
         String [] rowHeadz1 = {"Mã Câu","Đề Bài"};
@@ -83,6 +85,7 @@ public class View_giaovien extends javax.swing.JFrame {
             while(rs.next()) {
                 cbChonmon.addItem(rs.getString("tenmon"));
                 mapMonhoc.put(rs.getString("tenmon"), rs.getString("mamon"));
+                mapMonhoc2.put(rs.getString("mamon"), rs.getString("tenmon"));
             }
             st.close();
             con.close();
@@ -154,6 +157,11 @@ public class View_giaovien extends javax.swing.JFrame {
             }
         ));
         tableTempDethi.setGridColor(new java.awt.Color(255, 255, 255));
+        tableTempDethi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableTempDethiMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableTempDethi);
 
         txtDebai.setBackground(new java.awt.Color(255, 255, 255));
@@ -215,6 +223,11 @@ public class View_giaovien extends javax.swing.JFrame {
 
         btnTaode.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTaode.setText("Tạo đề");
+        btnTaode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -334,6 +347,7 @@ public class View_giaovien extends javax.swing.JFrame {
             int index = tableCauhoi.getSelectedRow();
             DefaultTableModel dtm = (DefaultTableModel) tableCauhoi.getModel();
             macau = Integer.parseInt(dtm.getValueAt(index, 0).toString());
+            mamonz = dtm.getValueAt(index, 1).toString();
             debai = dtm.getValueAt(index, 2).toString();
             da1 = dtm.getValueAt(index, 3).toString();
             da2 = dtm.getValueAt(index, 4).toString();
@@ -347,6 +361,9 @@ public class View_giaovien extends javax.swing.JFrame {
     }//GEN-LAST:event_tableCauhoiMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        cbChonmon.setSelectedItem(mapMonhoc2.get(mamonz));
+        load_Cauhoi(mamonz);
+        cbChonmon.setEnabled(false);
         Vector v = new Vector();
         v.add(macau);
         v.add(debai);
@@ -354,13 +371,58 @@ public class View_giaovien extends javax.swing.JFrame {
         v.add(da2);
         v.add(da3);
         v.add(da4);
+        andanh.addRow(v);
+        Vector v2 = new Vector();
+        v2.add(macau);
+        v2.add(debai);
+        hienthi.addRow(v2);
+        tableTempDethi.setModel(hienthi);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
+        hienthi.removeRow(tempIndex);
+        andanh.removeRow(tempIndex);
+        tableTempDethi.setModel(hienthi);
+        txtDebai.setText("");
+        txtDapan1.setText("");
+        txtDapan2.setText("");
+        txtDapan3.setText("");
+        txtDapan4.setText("");
+        if(hienthi.getRowCount()==0) {
+            cbChonmon.setEnabled(true);
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
+    private void tableTempDethiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTempDethiMouseClicked
+        int index = tableTempDethi.getSelectedRow();
+        tempIndex = index;
+        txtDebai.setText(andanh.getValueAt(index, 1).toString());
+        txtDapan1.setText(andanh.getValueAt(index, 2).toString());
+        txtDapan2.setText(andanh.getValueAt(index, 3).toString());
+        txtDapan3.setText(andanh.getValueAt(index, 4).toString());
+        txtDapan4.setText(andanh.getValueAt(index, 5).toString());
+    }//GEN-LAST:event_tableTempDethiMouseClicked
 
+    private void btnTaodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaodeActionPerformed
+        ArrayList<Integer> list =  new ArrayList<>();
+        for(int i=0;i<hienthi.getRowCount();i++) {
+            list.add((int)hienthi.getValueAt(i, 0));
+        }
+        String dscauhoi = list.toString();
+        String monhoc = mapMonhoc2.get(mamonz);
+        int socau = hienthi.getRowCount();
+        int thoiluong = (int) spinThoiluong.getValue();
+        try {
+            con = connection.getConnection();
+            String sql = "INSERT INTO `dethi`(`monhoc`, `socau`, `thoiluong`, `dscauhoi`) VALUES ('"+monhoc+"','"+socau+"','"+thoiluong+"','"+dscauhoi+"')";
+            Statement st=con.createStatement();
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(this, "Tạo đề thành công");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnTaodeActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaode;
     private javax.swing.JButton btnThem;
