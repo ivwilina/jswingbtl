@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 02:40 PM
+-- Generation Time: Apr 07, 2024 at 08:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cauhoi` (
-  `idcauhoi` varchar(20) NOT NULL,
+  `idcauhoi` int(20) NOT NULL,
   `mamon` varchar(10) NOT NULL,
   `debai` varchar(1000) NOT NULL,
   `dapan1` varchar(1000) NOT NULL,
@@ -37,6 +37,20 @@ CREATE TABLE `cauhoi` (
   `dapan4` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cauhoi`
+--
+
+INSERT INTO `cauhoi` (`idcauhoi`, `mamon`, `debai`, `dapan1`, `dapan2`, `dapan3`, `dapan4`) VALUES
+(1, 'eng', 'I would have visited you before if there _____ quite a lot of people in your house.', 'hadn\'t been', 'hadn\'t', 'wouldn\'t be', 'wasn\'t'),
+(2, 'eng', 'If you had caught the bus, you _____ late for work.', 'wouldn\'t have been', 'would have been', 'wouldn’t be', 'would be'),
+(3, 'eng', 'If I _____, I would express my feelings.', 'were asked', 'would ask', 'had been asked', 'asked'),
+(4, 'eng', 'If _____ as I told her, she would have succeeded.', 'she had done', 'she has done', 'she does', 'she did'),
+(5, 'eng', 'Will you be angry if I _____ your pocket dictionary?', 'steal', 'stole', 'have stolen', 'were to steal'),
+(6, 'eng', 'You made a mistake by telling her a lie. It _____ better if you _____ to her.', 'would have been/ hadn\'t lied', 'would be/ didn\'t lie', 'will be/ don\'t lie', 'would be/ hadn\'t lied'),
+(7, 'eng', 'John would be taking a great risk if he _____ his money in that business.', 'invested', 'would invest', 'had invested', 'invests'),
+(8, 'math', 'Hình vuông có mấy cạnh', '4', '3', '1', '2');
+
 -- --------------------------------------------------------
 
 --
@@ -44,7 +58,7 @@ CREATE TABLE `cauhoi` (
 --
 
 CREATE TABLE `dethi` (
-  `made` varchar(50) NOT NULL,
+  `made` int(50) NOT NULL,
   `monhoc` varchar(50) NOT NULL,
   `socau` int(11) NOT NULL,
   `thoiluong` int(11) NOT NULL,
@@ -124,6 +138,22 @@ ALTER TABLE `monhoc`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cauhoi`
+--
+ALTER TABLE `cauhoi`
+  MODIFY `idcauhoi` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `dethi`
+--
+ALTER TABLE `dethi`
+  MODIFY `made` int(50) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

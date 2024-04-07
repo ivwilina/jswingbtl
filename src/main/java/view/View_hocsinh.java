@@ -84,14 +84,14 @@ public class View_hocsinh extends javax.swing.JFrame {
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jTabbedPane1.setName(""); // NOI18N
         jTabbedPane1.setOpaque(true);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đề thi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đề thi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         tableAllDethi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tableAllDethi.setModel(new javax.swing.table.DefaultTableModel(
@@ -131,8 +131,13 @@ public class View_hocsinh extends javax.swing.JFrame {
 
         lblThoiluong.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jButton1.setText("Làm Bài");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -157,7 +162,7 @@ public class View_hocsinh extends javax.swing.JFrame {
                             .addComponent(lblSocau, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMonhoc, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblMade, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))))
         );
@@ -211,7 +216,7 @@ public class View_hocsinh extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -280,6 +285,7 @@ public class View_hocsinh extends javax.swing.JFrame {
                     .addComponent(btn_luu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_doi_mk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(188, Short.MAX_VALUE))
+            .addGap(0, 827, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,6 +368,7 @@ public class View_hocsinh extends javax.swing.JFrame {
         lblThoiluong.setText(dtm.getValueAt(index, 3).toString() + " phút");
     }//GEN-LAST:event_tableAllDethiMouseClicked
 
+
     private void txt_quequanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quequanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_quequanActionPerformed
@@ -400,6 +407,11 @@ public class View_hocsinh extends javax.swing.JFrame {
         new Doi_pass(a).setVisible(true);
     }//GEN-LAST:event_btn_doi_mkActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String made = lblMade.getText();
+        new View_lambai(made).setVisible(true);
+        this.toBack();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void load_alldethi() {
         try {
             ResultSet allDethi = modelDethi.getAllDethi();

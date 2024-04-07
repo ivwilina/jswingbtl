@@ -168,6 +168,9 @@ public class View_login extends javax.swing.JFrame {
             System.out.println(phanquyen);
         }else if(phanquyen.equals("giaovien")) {
             label_CanhBao.setText("");
+            new View_giaovien().setVisible(true);
+            this.dispose();
+            System.out.println(phanquyen);
             System.out.println(phanquyen);
         }else if(phanquyen.equals("hocsinh")) {
             label_CanhBao.setText("");        
