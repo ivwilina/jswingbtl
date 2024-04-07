@@ -75,4 +75,18 @@ public class Model_hocsinh {
         } catch (Exception e) {
         }
     }
+    public void SuaThongTinHS() {
+    try {
+       con = connection.getConnection();
+    String Sql = "Update  user  Set hoten = ?,sdt = ?,quequan = ? where id = ?";
+   
+    PreparedStatement st = con.prepareStatement(Sql);
+    st.setString(1, hoten);
+    st.setString(2, sdt);
+    st.setString(3,quequan);
+    st.setString(4,id);
+    st.executeUpdate();
+    }
+    catch(Exception e ){}
+    }
 }

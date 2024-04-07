@@ -9,6 +9,7 @@ import model.Model_hocsinh;
 import controller.Controller_hocsinh;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,7 +29,13 @@ public class View_hocsinh extends javax.swing.JFrame {
         modelHocsinh.setId(id);
         modelHocsinh.getThongtinhs();
         lblNavTen.setText(modelHocsinh.getHoten());
-        
+        txt_hoten.setText(modelHocsinh.getHoten());
+        txt_quequan.setText(modelHocsinh.getQuequan());
+        txt_sdt.setText(modelHocsinh.getSdt());
+        txt_hoten.setEnabled(false);
+        txt_quequan.setEnabled(false);
+        txt_sdt.setEnabled(false);
+        btn_luu.setEnabled(false);
         load_alldethi();
     }
 
@@ -58,6 +65,15 @@ public class View_hocsinh extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txt_hoten = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txt_sdt = new javax.swing.JTextField();
+        txt_quequan = new javax.swing.JTextField();
+        btn_sua = new javax.swing.JButton();
+        btn_luu = new javax.swing.JButton();
+        btn_doi_mk = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblNavTen = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -210,15 +226,80 @@ public class View_hocsinh extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setText("Họ và tên");
+
+        jLabel7.setText("Số điện thoại");
+
+        jLabel8.setText("Quê quán");
+
+        txt_quequan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_quequanActionPerformed(evt);
+            }
+        });
+
+        btn_sua.setText("Sửa thông tin cá nhân");
+        btn_sua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_suaActionPerformed(evt);
+            }
+        });
+
+        btn_luu.setText("Cập nhật");
+        btn_luu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_luuActionPerformed(evt);
+            }
+        });
+
+        btn_doi_mk.setText("Đổi mật khẩu");
+        btn_doi_mk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_doi_mkActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 847, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_hoten, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(txt_sdt)
+                    .addComponent(txt_quequan))
+                .addGap(97, 97, 97)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_luu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_doi_mk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 562, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_hoten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_sua))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txt_sdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_luu))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_quequan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_doi_mk))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tài khoản", jPanel4);
@@ -281,6 +362,44 @@ public class View_hocsinh extends javax.swing.JFrame {
         lblThoiluong.setText(dtm.getValueAt(index, 3).toString() + " phút");
     }//GEN-LAST:event_tableAllDethiMouseClicked
 
+    private void txt_quequanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quequanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_quequanActionPerformed
+
+    private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
+ txt_hoten.setEnabled(true);
+        txt_quequan.setEnabled(true);
+        txt_sdt.setEnabled(true);  
+        btn_luu.setEnabled(true);// TODO add your handling code here:
+    }//GEN-LAST:event_btn_suaActionPerformed
+
+    private void btn_luuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_luuActionPerformed
+        String hoten = txt_hoten.getText().trim();
+        String quequan = txt_quequan.getText().trim();
+        String sdt = txt_sdt.getText().trim();
+        // assign value 
+        modelHocsinh.setHoten(hoten);
+        modelHocsinh.setQuequan(quequan);
+        modelHocsinh.setSdt(sdt);
+        modelHocsinh.setId(modelHocsinh.getId());
+        modelHocsinh.SuaThongTinHS();
+        JOptionPane.showMessageDialog(this, "Cập nhật thành công <3 ");
+        // load lai info
+        txt_hoten.setText(modelHocsinh.getHoten());
+        txt_quequan.setText(modelHocsinh.getQuequan());
+        txt_sdt.setText(modelHocsinh.getSdt());
+        //vísible 
+        btn_luu.setEnabled(false);
+         txt_hoten.setEnabled(false);
+        txt_quequan.setEnabled(false);
+        txt_sdt.setEnabled(false);  
+    }//GEN-LAST:event_btn_luuActionPerformed
+
+    private void btn_doi_mkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_doi_mkActionPerformed
+       String a = modelHocsinh.getId();
+        new Doi_pass(a).setVisible(true);
+    }//GEN-LAST:event_btn_doi_mkActionPerformed
+
     public void load_alldethi() {
         try {
             ResultSet allDethi = modelDethi.getAllDethi();
@@ -302,12 +421,18 @@ public class View_hocsinh extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_doi_mk;
+    private javax.swing.JButton btn_luu;
+    private javax.swing.JButton btn_sua;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -322,5 +447,8 @@ public class View_hocsinh extends javax.swing.JFrame {
     private javax.swing.JLabel lblSocau;
     private javax.swing.JLabel lblThoiluong;
     private javax.swing.JTable tableAllDethi;
+    private javax.swing.JTextField txt_hoten;
+    private javax.swing.JTextField txt_quequan;
+    private javax.swing.JTextField txt_sdt;
     // End of variables declaration//GEN-END:variables
 }
