@@ -34,6 +34,13 @@ public class View_hocsinh extends javax.swing.JFrame {
         modelHocsinh.setId(id);
         modelHocsinh.getThongtinhs();
         lblNavTen.setText(modelHocsinh.getHoten());
+        txt_hoten.setText(modelHocsinh.getHoten());
+        txt_quequan.setText(modelHocsinh.getQuequan());
+        txt_sdt.setText(modelHocsinh.getSdt());
+        txt_hoten.setEnabled(false);
+        txt_quequan.setEnabled(false);
+        txt_sdt.setEnabled(false);
+        btn_luu.setEnabled(false);
 
         txt_hoten.setText(modelHocsinh.getHoten());
         txt_quequan.setText(modelHocsinh.getQuequan());
