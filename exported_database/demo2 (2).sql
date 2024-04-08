@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2024 at 08:14 PM
+-- Generation Time: Apr 08, 2024 at 06:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -62,9 +62,39 @@ CREATE TABLE `dethi` (
   `monhoc` varchar(50) NOT NULL,
   `socau` int(11) NOT NULL,
   `thoiluong` int(11) NOT NULL,
-  `dscauhoi` varchar(500) NOT NULL,
-  `dsdapan` varchar(500) NOT NULL
+  `dscauhoi` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dethi`
+--
+
+INSERT INTO `dethi` (`made`, `monhoc`, `socau`, `thoiluong`, `dscauhoi`) VALUES
+(3, 'Tieng Anh', 4, 2, '[6, 3, 2, 7]'),
+(4, 'Tieng Anh', 5, 2, '[6, 3, 2, 7, 3]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ketqua`
+--
+
+CREATE TABLE `ketqua` (
+  `idlanthi` int(11) NOT NULL,
+  `made` int(11) NOT NULL,
+  `id` varchar(50) NOT NULL,
+  `diem` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `ketqua`
+--
+
+INSERT INTO `ketqua` (`idlanthi`, `made`, `id`, `diem`) VALUES
+(1, 0, 'user03', 10),
+(2, 3, 'user03', 10),
+(3, 3, 'user03', 10),
+(4, 4, 'user03', 0);
 
 -- --------------------------------------------------------
 
@@ -108,7 +138,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `phanquyen`, `hoten`, `sdt`, `quequan`) VALUES
 ('user01', 'admin', '123', 'quantri', 'Nguyễn Văn A', '1234567890', 'Việt Nam'),
 ('user02', 'teacher', '123', 'giaovien', 'Nguyễn Văn B', '1234567890', 'Thái Lan'),
-('user03', 'student', '123', 'hocsinh', 'Nguyễn Văn C', '1234567890', 'Việt Nam');
+('user03', 'student', '1234', 'hocsinh', 'Nguyễn Văn C', '1234567890', 'Việt Nam');
 
 --
 -- Indexes for dumped tables
@@ -125,6 +155,12 @@ ALTER TABLE `cauhoi`
 --
 ALTER TABLE `dethi`
   ADD PRIMARY KEY (`made`);
+
+--
+-- Indexes for table `ketqua`
+--
+ALTER TABLE `ketqua`
+  ADD PRIMARY KEY (`idlanthi`);
 
 --
 -- Indexes for table `monhoc`
@@ -153,7 +189,13 @@ ALTER TABLE `cauhoi`
 -- AUTO_INCREMENT for table `dethi`
 --
 ALTER TABLE `dethi`
-  MODIFY `made` int(50) NOT NULL AUTO_INCREMENT;
+  MODIFY `made` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `ketqua`
+--
+ALTER TABLE `ketqua`
+  MODIFY `idlanthi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
