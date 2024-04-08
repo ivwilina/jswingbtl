@@ -165,6 +165,8 @@ public class View_login extends javax.swing.JFrame {
         String phanquyen = model.dangNhap();
         if(phanquyen.equals("quantri")) {
             label_CanhBao.setText("");
+            new Taikhoan().setVisible(true);
+            this.dispose();
             System.out.println(phanquyen);
         }else if(phanquyen.equals("giaovien")) {
             label_CanhBao.setText("");

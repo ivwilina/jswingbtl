@@ -98,6 +98,7 @@ public class View_hocsinh extends javax.swing.JFrame {
         btn_sua = new javax.swing.JButton();
         btn_luu = new javax.swing.JButton();
         btn_doi_mk = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblNavTen = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -299,6 +300,13 @@ public class View_hocsinh extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Đăng xuất");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -316,9 +324,11 @@ public class View_hocsinh extends javax.swing.JFrame {
                     .addComponent(txt_quequan))
                 .addGap(97, 97, 97)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_luu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_doi_mk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_sua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_luu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_doi_mk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -339,7 +349,9 @@ public class View_hocsinh extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(txt_quequan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_doi_mk))
-                .addContainerGap(414, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addContainerGap(373, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tài khoản", jPanel4);
@@ -478,6 +490,11 @@ public class View_hocsinh extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         load_ketqua();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        new View_login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void load_alldethi() {
         try {
             ResultSet allDethi = modelDethi.getAllDethi();
@@ -504,6 +521,7 @@ public class View_hocsinh extends javax.swing.JFrame {
     private javax.swing.JButton btn_sua;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

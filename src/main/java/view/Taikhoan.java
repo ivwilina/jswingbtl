@@ -478,6 +478,8 @@ private void check_valid(String ms) {
            txt_quequan.setText("");
            txt_sdt.setText("");
            txt_user.setText("");
+           txt_id.setEnabled(true);
+           txt_user.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_capnhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capnhatActionPerformed
