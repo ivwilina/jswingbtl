@@ -7,10 +7,14 @@ package view;
 import model.Model_dethi;
 import model.Model_hocsinh;
 import controller.Controller_hocsinh;
+import database.connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.sql.Connection;
+import java.sql.Statement;
 /**
  *
  * @author ivwi3
@@ -18,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 public class View_hocsinh extends javax.swing.JFrame {
         Model_dethi modelDethi;
         Model_hocsinh modelHocsinh;
+        private String user;
+        private Connection con = null;
     /**
      * Creates new form View_hocsinh
      */
@@ -28,8 +34,9 @@ public class View_hocsinh extends javax.swing.JFrame {
         modelHocsinh.setId(id);
         modelHocsinh.getThongtinhs();
         lblNavTen.setText(modelHocsinh.getHoten());
-        
+        user = id;
         load_alldethi();
+        load_ketqua();
     }
 
     /**
@@ -56,7 +63,7 @@ public class View_hocsinh extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        ketqua = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         lblNavTen = new javax.swing.JLabel();
@@ -181,18 +188,15 @@ public class View_hocsinh extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        ketqua.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(ketqua);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -206,8 +210,8 @@ public class View_hocsinh extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -277,6 +281,30 @@ public class View_hocsinh extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void load_ketqua() {
+        try {
+            con = connection.getConnection();
+            ResultSet rs = null;
+            String sql = "select * from ketqua where id ='"+user+"'";
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+            ketqua.removeAll();
+            String [] rowHead = {"Mã lượt thi","Mã đề","Điểm"};
+            DefaultTableModel dtm2 = new DefaultTableModel(rowHead,0);
+            while(rs.next()) {
+                Vector v = new Vector();
+                v.add(rs.getInt("idlanthi"));
+                v.add(rs.getInt("made"));
+                v.add(rs.getInt("diem"));
+                dtm2.addRow(v);
+            }
+            ketqua.setModel(dtm2);
+            st.close();
+            con.close();
+        } catch (Exception e) {
+        }
+    }
+    
     private void tableAllDethiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAllDethiMouseClicked
         int index = tableAllDethi.getSelectedRow();
         DefaultTableModel dtm  = (DefaultTableModel) tableAllDethi.getModel();
@@ -288,7 +316,11 @@ public class View_hocsinh extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String made = lblMade.getText();
-        new View_lambai(made).setVisible(true);
+        if(made.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn đề");
+            return;
+        }
+        new View_lambai(made,user).setVisible(true);
         this.toBack();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -326,7 +358,7 @@ public class View_hocsinh extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable ketqua;
     private javax.swing.JLabel lblMade;
     private javax.swing.JLabel lblMonhoc;
     private javax.swing.JLabel lblNavTen;
