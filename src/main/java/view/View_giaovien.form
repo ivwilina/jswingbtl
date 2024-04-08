@@ -23,20 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jTabbedPane1" alignment="0" pref="960" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -84,7 +76,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="82" max="32767" attributes="0"/>
+                                      <EmptySpace pref="60" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="cbChonmon" max="32767" attributes="0"/>
                                   <Component id="btnThem" alignment="0" max="32767" attributes="0"/>
@@ -133,7 +125,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="spinThoiluong" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnTaode" pref="118" max="32767" attributes="0"/>
+                              <Component id="btnTaode" pref="130" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="1" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -181,8 +173,8 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="2" rowCount="0">
-                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="M&#xe3; c&#xe2;u" type="java.lang.Object"/>
+                        <Column editable="true" title="C&#xe2;u h&#x1ecf;i" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -337,8 +329,8 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab2">
-                <Property name="tabTitle" type="java.lang.String" value="tab2"/>
+              <JTabbedPaneConstraints tabName="Th&#xf4;ng tin">
+                <Property name="tabTitle" type="java.lang.String" value="Th&#xf4;ng tin"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -346,15 +338,87 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="849" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txt_hoten_gv" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_sdt_gv" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_que_gv" alignment="0" pref="158" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="98" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="301" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="588" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txt_hoten_gv" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_sdt_gv" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_que_gv" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace pref="303" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_hoten_gv">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qu&#xea; qu&#xe1;n"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_sdt_gv">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_que_gv">
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
